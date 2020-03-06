@@ -1,33 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: emailservice
+  name: recommendationservice
   project: microservices-demo
 spec:
   selector:
     matchLabels:
-      app: emailservice
+      app: recommendationservice
   template:
     metadata:
       labels:
-        app: emailservice
+        app: recommendationservice
         project: microservices-demo
     spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/emailservice:v0.1.4
+        image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.1.4
         ports:
         - containerPort: 8080
-        env:
-        - name: PORT
-          value: "8080"
-        - name: DISABLE_PROFILER
-          value: "1" 
-        - name: DISABLE_STATS
-          value: "1" 
-        - name: DISABLE_TRACING
-          value: "1"
         readinessProbe:
           periodSeconds: 5
           exec:
@@ -36,10 +27,21 @@ spec:
           periodSeconds: 5
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        env:
+        - name: PORT
+          value: "8080"
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "productcatalogservice:3550"
+        - name: DISABLE_PROFILER
+          value: "1" 
+        - name: DISABLE_STATS
+          value: "1" 
+        - name: DISABLE_TRACING
+          value: "1"
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 220Mi
           limits:
             cpu: 200m
-            memory: 128Mi
+            memory: 450Mi
