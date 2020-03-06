@@ -1,0 +1,22 @@
+apiVersion: securityenforcement.admission.cloud.ibm.com/v1beta1
+kind: ClusterImagePolicy
+metadata:
+  name: microservices-demo-image-policy
+  namespace: ""
+  resourceVersion: ""
+  selfLink: /apis/securityenforcement.admission.cloud.ibm.com/v1beta1/clusterimagepolicies/microservices-demo-image-policy
+  uid: ""
+spec:
+  repositories:
+  - name: k8s.gcr.io/*
+    policy: null
+  - name: gcr.io/google_samples/*
+    policy: null
+  - name: docker.io/patrocinio/*
+    policy: null
+  - name: docker.io/rabbitmq
+    policy: null
+  - name: docker.io/mongo
+    policy: null
+  - name: gcr.io/google-samples/*
+    policy: null
