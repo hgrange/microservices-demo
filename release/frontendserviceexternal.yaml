@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-external
+  project: microservices-demo
 spec:
   type: LoadBalancer
   selector:
