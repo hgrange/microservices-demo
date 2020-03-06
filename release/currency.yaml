@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: currencyservice
+  project: microservices-demo
 spec:
   selector:
     matchLabels:
@@ -10,6 +11,7 @@ spec:
     metadata:
       labels:
         app: currencyservice
+        project: microservices-demo
     spec:
       terminationGracePeriodSeconds: 5
       containers:
