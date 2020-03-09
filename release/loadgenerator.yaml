@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: loadgenerator
+        project: microservices-demo
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
