@@ -7,6 +7,7 @@ spec:
   selector:
     matchLabels:
       app: adservice
+      project: microservices-demo
   template:
     metadata:
       labels:
